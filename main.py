@@ -62,7 +62,7 @@ class Application(tk.Frame):
         self.__choose_file_button = tk.Button(text="Open", font=("Arial", 20), command=self.__open_file_dialog)
         self.__choose_file_button.place(relx=0.45, rely=0.85)
         self.__convert_button = tk.Button(text="Convert", font=("Arial", 20),
-                                          command=self.__encoder.encode,state=tk.DISABLED)
+                                          command=self.__encoder.encode, state=tk.DISABLED)
         self.__convert_button.place(relx=0.03, rely=0.85)
         message = "Press Open to choose single or multiple files to convert to utf-8"
         self.__message = tk.Label(text=message, font=("Arial", 14))
@@ -75,6 +75,10 @@ class Application(tk.Frame):
         if len(self.__filenames) > 0:
             self.__convert_button["state"] = tk.NORMAL
 
+    def __encode(self):
+        self.__encoder.encode()
+        self.__filenames = []
+        self.__convert_button["state"] = tk.DISABLED
 
 def main():
     root = tk.Tk()
