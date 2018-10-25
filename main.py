@@ -30,7 +30,7 @@ class Encoder(object):
             __tmp_file = open(__tmp_filename, "r")
             __file.write(__tmp_file.read())
             self.__close_files([__file, __tmp_file])
-            os.remove(__tmp_filename)
+        os.remove(__tmp_filename)
 
     def __close_files(self, files):
         for file in files:
@@ -70,7 +70,7 @@ class Application(tk.Frame):
 
     def __open_file_dialog(self):
         self.__filenames = askopenfilenames(initialdir=".", title="Select Subtitle Files",
-                                            filetypes=(("str files", "*.srt"), ("all files", "*.*")))
+                                            filetypes=(("srt files", "*.srt"), ("all files", "*.*")))
         self.__encoder.set_filenames(filenames=self.__filenames)
         if len(self.__filenames) > 0:
             self.__convert_button["state"] = tk.NORMAL
